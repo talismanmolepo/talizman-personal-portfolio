@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Web Design v2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        
+        *{
+            box-sizing: border-box;
+
+        }
+
+        body{
+            font-family:Segoe UI;
+            margin: 0;
+        }
+
+        .navbar{
+            display: flex;
+            justify-content: flex-end;
+            background-color: transparent;
+            text-align: center;
+            
+        }
+
+        .navbar a{
+            color: black;
+            padding: 18px 20px;
+            text-decoration: none;
+            text-align: center;
+            
+        }
+
+        .navbar a:hover{
+            /* background-color: darkcyan; */
+            text-decoration: 2px underline;
+            transition: 0.3s ease-in;
+        }
+
+        .myintro{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            
+        }
+
+        .myimage{
+            height: 600px;
+            flex: 60%;
+            
+        }
+
+        .myimage img{
+            height:400px;
+            width: 75%;
+            margin-top: 40px;
+            margin-left: 40px;
+        }
+
+        .introduction{
+            flex: 40%;
+            background-color:transparent;
+            text-align: center;
+        }
+
+        .introduction a{
+            text-decoration: none;
+            color: black;
+            text-align: center;
+           
+
+        }
+
+        .introduction button{
+            margin-top: 160px;
+            border-radius: 12px;
+            width: 200px;
+            height: 80px;
+            border: solid #482222 ;
+            background-color: transparent;
+            font-style: italic;
+        }
+
+
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .side{
+            flex: 30%;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        .main{
+            flex: 70%;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .image{
+            background-color: #aaa;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .projects{
+            padding: 40px 20px;
+        }
+
+        .cards{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card{
+            flex: 1 1 250px;
+            background-color: #b6adad;
+            padding: 10px;
+            border-radius: 12px;
+            height: 400px;
+        }
+
+        .card img{
+            height: 140px;
+            width: 75%;
+            margin-left: 45px;
+        }
+
+        footer{
+            padding:20px;
+            text-align: center;
+            background-color: #ddd;
+        }
+
+        @media screen and (max-width:700px) {
+            .container, .navbar{
+                flex-direction: column;
+            }
+        }
+
+
+    </style>
+
+    <!-- second css -->
+
+    <style>
+        html{ 
+            scroll-behavior: smooth;
+        }
+
+        section[id]{
+            scroll-margin-top: 70px;
+        }
+
+        /* navbar overrides*/
+        .navbar{
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.85);
+            -webkit-backdrop-filter: blur(8px);
+            align-items: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled{
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .navbar a{
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* animated hover effect */
+
+        .navbar a:hover{
+            text-decoration: none;
+        }
+
+        .navbar a::after{
+            content: "";
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 10px;
+            height: 2px;
+            background: #482222;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar a:hover::after, .navbar a.active::after {
+            transform: scaleX(1);
+        }
+
+        .navbar a.active {
+            color:#482222;font-weight: 700;
+        }
+
+        /* hamburger button */
+        .nav-toggle{
+            display: none;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-left: auto;
+            color: black;
+        }
+
+      
+
+        @media screen and (max-width:700px){
+
+            .navbar{
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .nav-toggle{
+                display: block;
+
+            }
+
+            .navbar a{
+                display: none;
+                width: 100%;
+                padding: 14px 20px;
+                border-top: 1px solid black;
+            }
+
+            .navbar.open a{
+                display: block;
+            }
+
+            .navbar a::after{
+                display: none;
+            }
+
+            .myimage{
+                flex: 100%;
+                height: auto;
+            }
+
+            .myimage img{
+                width: 90%;
+                margin-left: 5%;
+                height: auto;
+            }
+
+            .introduction{
+                flex: 100%;
+            }
+
+            .introduction button{
+                margin-top: 30px;
+            }
+
+            
+        }
+
+        /* Project Portfolio */
+
+        .projects{
+            padding: 50px;
+            background:#f1f1f1 ;
+        }
+
+        .projects h2{
+            text-align: center;
+            margin-top: 0;
+
+        }
+
+        .cards{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card{
+            flex: 1 1 250px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 420px;
+        }
+
+        .card:hover{
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+
+        }
+
+        .card a {
+            color: #482222;
+            font-weight: 600;
+            text-decoration: none;
+
+        }
+
+
+        /* Contact & Social Links */
+        #contact {
+            background: linear-gradient(132deg, #482222, #1f0f0f);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        #contact .subtitle {
+            opacity: 0.75;
+            margin: -6px 0 36px;
+
+        }
+
+
+        .socials{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            
+
+        }
+
+        .social-card{
+            --accent:#fff;
+            position: relative;
+            flex: 1 1 220px;
+            max-width: 270px;
+            padding: 32px 20px 26px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            text-decoration: none;
+            overflow: hidden;
+            transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+
+        }
+
+        .social-card.email {--accent: #f4b942;}
+        .social-card.linkedin{--accent: #4aa3ff;}
+        .social-card.github{--accent: #b78cff;}
+
+
+        /* glow that fills the card from below on hover */
+
+        .social-card::before{
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 0;
+            background: linear-gradient(to top, var(--accent),transparent);
+            opacity: 0.25;
+            transition: height 0.4s ease;
+
+        }
+
+        .social-card:hover{
+            transform: translateY(-10px) rotate(-1deg);
+            border-color: var(--accent);
+            box-shadow: 0 16px 30px rgba(152, 81, 81, 0.4), 0 0 24px -4px var(--accent);
+
+        }
+
+        .social-card:hover::before{
+            height: 100%;
+        }
+
+        .social-card svg{
+            position: relative;
+            width: 46px;
+            height: 46px;
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.5s ease;
+
+        }
+
+        .social-card:hover svg{
+            transform: scale(1.2) rotate(360deg);
+
+        }
+
+        .social-card h3{
+            position: relative;
+            margin: 16px 0 4px;
+    
+        }
+
+        .social-card span{
+            position: relative;
+            font-size: 14px;
+            opacity: 0.8;
+            word-break: break-all;
+
+        }
+
+        .copy-btn{
+            position: relative;
+            margin-top: 16px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: white;
+            font-family: inherit;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+
+        }
+
+        .copy-btn:hover{
+            background: var(--accent);
+            color: #1f0f0f;
+        }
+
+        #toast{
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translate(-50%, 20px);
+            background: #222;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 200;
+        }
+
+        #toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        /* hamburger icon */
+        .nav-toggle{
+            display: none;
+            position: relative;
+            width: 48px;
+            height: 48px;
+            margin-left: auto;
+            padding: 0;
+            border: 0;
+            cursor: pointer;
+            font-size: 0;
+            color: transparent;
+            background: linear-gradient(#482222, #482222) center / 26px 3px no-repeat;
+        }
+
+        .nav-toggle::before,
+        .nav-toggle::after{
+            content: "";
+            position: absolute;
+            left: 11px;
+            width: 26px;
+            height: 3px;
+            border-radius: 2px;
+            background: #482222;
+            transition: transform 0.3s ease, top 0.3s ease;
+        }
+
+        .nav-toggle::before{ top: 15px; }
+        .nav-toggle::after{ top: 30px; }
+
+        .navbar.open .nav-toggle{ background-size: 0 0; }
+        .navbar.open .nav-toggle::before{ top: 22.5px; transform: rotate(45deg); }
+        .navbar.open .nav-toggle::after{ top: 22.5px; transform: rotate(-45deg); }
+
+        @media screen and (max-width:700px){
+            .nav-toggle{ display: block; }
+        }
+
+        /* footer */
+        footer{
+            background-color: #1f0f0f;
+            color: #ddd;
+            padding: 50px 20px 20px;
+            text-align: left;
+        }
+
+        .footer-grid{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 36px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-grid > div {
+            flex: 1 1 280px;
+        }
+
+        .footer-grid > .footer-brand {
+            flex: 2 1 280px;
+        }
+
+        footer h3{
+            margin: 0 0 12px;
+            color: #f4b942;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+        }
+        
+        footer h4{
+            margin: 0 0 12px;
+            line-height: 1.6;
+        }
+
+        footer a {
+            display: block;
+            width: fit-content;
+            padding: 4px 0;
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3 ease, transform 0.3 ease;
+        }
+
+        footer a:hover{
+            color: #f4b942;
+            transform: translateX(4px);
+        }
+
+        .status{
+            display: inline-flex;
+            align-self: center;
+            gap: 8px;
+            padding: 6px 12px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+
+        }
+
+        .status::before{
+
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 8px #4ade80;
+        }
+
+        footer .footer-bottom{
+            max-width: 1000px;
+            margin: 36px auto 0;
+            padding-top: 18px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* back-to-top button */
+        #toTop{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 50%;
+            background: #482222;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 150;
+        }
+
+        #toTop.show{ 
+            opacity: 1;
+            pointer-events: auto; 
+        }
+
+        #toTop:hover{ 
+            transform: translateY(-4px);
+        }
+
+        /* About section: New Stacked layout */
+
+        .container{
+            flex-direction: column;
+        }
+
+
+        .side{
+            flex: none;
+            width: 100%;
+            padding: 50px 20px;
+        }
+
+        .about-card{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+
+        }
+
+        .about-photo {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+
+
+        }
+
+        .about-text{ flex: 1 1 320px;}
+        .about-text h2{ margin: 0 0 4px;}
+        .about-text h3{ margin: 0 0 14px;color: #482222;}
+        .about-text p{ margin: 0 0 12px; line-height: 1.7;}
+
+        .facts{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            max-width: 900px;
+            margin: 36px auto 0;
+
+        }
+
+        .fact{
+            flex: 1 1 220px;
+            padding: 16px 18px;
+            background: #fff;
+            border-left: 4px solid #482222;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.06);
+
+        }
+
+        .fact strong{
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #482222;
+
+        }
+
+        .main{
+            flex: none;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            
+
+        }
+
+        .topic{
+            padding: 24px;
+            background: #f9f9f9;
+            border-radius: 14px;
+            transition: transform 0.3s, box-shadow 0.3s ease;
+        }
+
+        .topic:hover{
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .topic h2{
+            margin-top: 0;
+        }
+
+        /* project portfolio image */
+        .image{
+            background-color: transparent;
+        }
+
+        .image img{
+            height:180px;
+            width:100%;
+
+        }
+
+
+        /* landing page font alternations */
+        .introduction p{
+            font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+            font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.35rem);
+            line-height: 1.7;
+            color: #333;
+            max-width: 34em;
+            margin: 0 auto;
+        }
+
+        .introduction h5{
+            font-size: 1.1rem;
+            color: #482222;
+        }
+
+        
+
+        
+
+        
+        
+
+         
+
+    </style>
+
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#myintro">Home</a>
+        <a href="#side">About</a>
+        <a href="#projects">Project Portfolio</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="myintro" id="myintro">
+         <div class="introduction">
+            <h1>INTRODUCTION</h1>
+            <h5>Talisman Molepo | Software Engineer Student</h5>
+            <p>I design and build clean, responsive & user friendly websites. Browse through my portfolio, or download my CV to view my qualifications.</p>
+            
+
+            <a href="documentation/Molepo Talisman CTU Student CV[1] (1).pdf" download><button>Download CV</button></a>
+        </div>
+        <div class="myimage"><img src="images/4c5bcbf41b8dda721bb02fcaf9aa2f9e.jpg"  alt="landing_page.png"></div>
+       
+    </div>
+
+    <!-- Content Container -->
+    <div class="container" id="side">
+
+        <!-- About Me -->
+        <div class="side" >
+
+            <div class="about-card">
+                <img src="images/9416BCCB-F05D-45E3-A422-C441677484B8.JPG.jpeg" alt="Self Portrait" class="about-photo">
+            
+
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <h3>Nice to meet you!</h3>
+                    <p>I'm Talisman Molepo, a second year Software Engineering student at CTU Training Solutions, who enjoys solving problems with code and design. </p>
+                    <p>I am motivated by learning new technologies, collaborating with others and building products that make everyday tasks easier.</p>
+                </div>
+            </div>
+
+
+            <div class="facts">
+                <div class="fact"><strong>Based in</strong><span>Polokwane, South Africa</span></div>
+                <div class="fact"><strong>Languages</strong><span>Northern Sotho, English</span></div>
+                <div class="fact"><strong>Open to</strong><span>Employment & Internships</span></div>
+            </div>
+
+
+        </div>
+
+        <!-- Background, Skills & Education -->
+        <div class="main">
+
+            <article class="topic">
+                <h2 id="background">BACKGROUND</h2>
+                <h5>Journey</h5>
+
+                <div class="image"> 
+                    <img src="images/IMG_3916.JPG.jpeg" alt="background.png">
+                </div>
+                <p>I always had an obsession with computers growing up. I shared a lot of my hours engaging with the screen and I could argue that my tech journey began before I was enrolled for a course. </p>
+                <p></p>
+
+            </article>
+
+
+            <article class="topic">
+                <h2 id="skills">SKILLS</h2>
+                <h5>Technical and professional strengths</h5>
+                
+                <div class="image">
+                    <img src="images/html css and javascript.jpeg" alt="skills.png">
+                </div>
+
+               
+                <p><b>Front-end</b>: HTML, CSS, JavaScript.</p>
+                <p><b>Tools</b>: Git and GitHub, VS Code, GitHub Pages</p>
+                <p><b>Practices</b>: Responsive design, clear readable code, debugging, version control</p>
+
+            </article>
+
+
+            <article class="topic">
+                <h2 id="education">EDUCATION</h2>
+                <h5>Qualification, Institution</h5>
+
+                <div class="image">
+                    <img src="images/coding-classroom-activity-stockcake.jpg" alt="Education.png">
+                </div>
+
+            
+                <p><b>OC: Software Engineer</b>, CTU Training Solution | 2025 - present</p>
+                <p><b>Programming Foundation</b>, CTU Training Solution | 2024</p>
+             
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+    <!-- Project Portfolio Section  -->
+    <section class="projects" id="projects">
+        <h2>PROJECT PORTFOLIO</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>GLEN ARTWORKS</h3>
+                <img src="images/Screenshot 2026-11-20 043908.png" alt="project1.png">
+                <p>Art Portfolio Website</p>
+                <p>Tools Used : HTML, CSS, JavaScript</p>
+                <a href="https://github.com/talismanmolepo/kabelo-glen-artworks" target="_blank" rel="noopener">View project &rarr;</a>
+            </div>
+
+            <div class="card">
+                <h3>Polokwane Student Accomodation Finder</h3>
+                <img src="images/Screenshot 2026-11-20 044805.png" alt="project2.png">
+                <p>Accomodation finder for students studying in Polokwane</p>
+                <p>Tools Used: HTML, CSS, JavaScript, Node.js</p>
+                <a href="https://github.com/talismanmolepo/Polokwane-Accommodation-Finder" target="_blank" rel="noopener">View project &rarr;</a>
+            </div>
+            
+
+           
+            <div class="card">
+                <h3>To-Do list</h3>
+                <img src="https://github.com/talismanmolepo/cheeky-to-do-list" alt="project3.png">
+                <p>Simple to do list</p>
+                <p>Tools Used: HTML, CSS, JavaScript</p>
+                
+                <a href="https://github.com/talismanmolepo/cheeky-to-do-list" target="_blank" rel="noopener">View project &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section -->
+    <section class="contact" id="contact">
+        <h2>LET'S CONNECT</h2>
+        <p class="subtitle">Pick your favourite way to reach me</p>
+
+        <div class="socials">
+            <!-- Email -->
+            <div class="social-card email">
+                <a href="mailto:mokwatzz@icloud.com" style="color: inherit;text-decoration: none;display: block;">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <h3>Email</h3>
+                    <span>mokwatzz@icloud.com</span>
+                </a>
+                <button class="copy-btn" data-copy="mokwatzz@icloud.com">Copy Email</button>
+            </div>
+
+            <!-- LinkedIn -->
+            <a class="social-card linkedin" href="https://www.linkedin.com/in/talisman-molepo-41414b307?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <h3>LinkedIn</h3>
+                <span>/in/talisman-molepo</span>
+            </a>
+
+            <!-- GitHub -->
+            <a class="social-card github" href="https://github.com/talismanmolepo" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <h3>GitHub</h3>
+                <span>/talismanmolepo</span>
+            </a>
+
+        </div>
+
+    </section>
+
+    <div id="toast">Email copied to clipboard!</div>
+    
+    <footer>
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+                <h3>Talisman Molepo</h3>
+                <p>Software Engineer based in Polokwane, South Africa. I build clean, accessible and user-focused websites.</p>
+                <span class="status">Open to oppurtunies</span>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+                <a href="#myintro">Home</a>
+                <a href="#side">About</a>
+                <a href="#projects">Project Portfolio</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div>
+                <h4>Find me</h4>
+                <a href="malito:mokwatzz@icloud.com">Email</a>
+                <a href="https://www.linkedin.com/in/talisman-molepo-41414b307?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/talismanmolepo" target="_blank" rel="noopener">GitHub</a>
+            </div>
+
+        </div>
+
+        <p class="footer-button">&copy;<span id="year">2026 </span>Talisman Molepo. All rights reserved.</p>
+       
+    </footer>
+
+    <button id="toTop" aria-label="Back to top">&uarr;</button>
+
+
+    <script>
+    
+        const navbar = document.querySelector(".navbar");
+        const navLinks = [...navbar.querySelectorAll("a")];
+
+        // Hamburger button for mobile
+        const toggle = document.createElement("button");
+        toggle.className = "nav-toggle";
+        toggle.setAttribute("aria-label", "Toggle menu");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.innerHTML = "&#9776;";
+        navbar.prepend(toggle);
+
+        function setMenu(open) {
+            navbar.classList.toggle("open", open);
+            toggle.setAttribute("aria-expanded", String(open));
+            toggle.innerHTML = open ? "&#10005;" : "&#9776;";   
+        }
+
+        toggle.addEventListener("click", e => {
+            e.stopPropagation();
+            setMenu(!navbar.classList.contains("open"));
+        });
+
+        navLinks.forEach(a => a.addEventListener("click", () => setMenu(false)));          
+        document.addEventListener("click", e => { if (!navbar.contains(e.target)) setMenu(false); });  
+        document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });        
+        window.addEventListener("resize", () => { if (window.innerWidth > 700) setMenu(false); });     
+
+        // Build the list of nav links and the section each one points to
+        const items = navLinks
+            .map(a => {
+                const href = a.getAttribute("href") || "";
+                return { link: a, target: href.length > 1 ? document.getElementById(href.slice(1)) : null };
+            })
+            .filter(i => i.target);
+
+        // keep the sticky navbar from covering the top of a section after a jump
+        function setScrollOffsets() {
+            const h = navbar.offsetHeight + 10;
+            items.forEach(i => { i.target.style.scrollMarginTop = h + "px"; });
+        }
+        setScrollOffsets();
+        window.addEventListener("resize", setScrollOffsets);
+
+        // Shadow + highlight the link for the section currently in view
+        function updateNav() {
+            navbar.classList.toggle("scrolled", window.scrollY > 10);
+
+            const trigger = navbar.offsetHeight + 40;
+            let current = items[0];                       
+            items.forEach(i => {
+                if (i.target.getBoundingClientRect().top <= trigger) current = i;
+            });
+
+            // very bottom of the page: the last link 
+            const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+            if (atBottom && items.length) current = items[items.length - 1];
+
+            navLinks.forEach(a => a.classList.toggle("active", !!current && a === current.link));
+        }
+        window.addEventListener("scroll", updateNav, { passive: true });
+        window.addEventListener("resize", updateNav);
+        updateNav();
+
+        // Copy-to-clipboard for the email card
+        const toast = document.getElementById("toast");
+        document.querySelectorAll(".copy-btn").forEach(btn => {
+            btn.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(btn.dataset.copy);
+                    if (toast) {
+                        toast.classList.add("show");
+                        setTimeout(() => toast.classList.remove("show"), 2000);
+                    }
+                } catch (e) {
+                    window.location.href = "mailto:" + btn.dataset.copy;
+                }
+            });
+        });
+
+        
+    </script>
+
+
+</body>
+</html>

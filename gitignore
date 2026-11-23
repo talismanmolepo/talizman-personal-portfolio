@@ -1,0 +1,50 @@
+# ---------------------------------------------------------------
+# .gitignore for a static HTML/CSS/JavaScript portfolio site
+# ---------------------------------------------------------------
+
+# Operating system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor and IDE settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Backups and temporary files
+*.bak
+*.tmp
+*.orig
+*-backup.html
+index-old.html
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies and build output (only if you add tooling later)
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# Environment files and secrets: never commit these
+.env
+.env.*
+!.env.example
+
+# Note: the CV in assets/ and the images in images/ are NOT ignored on
+# purpose, because the live site needs them. If your CV contains a home
+# address or phone number you do not want public, remove it from the PDF
+# before committing.
