@@ -9,1029 +9,1339 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <style>
+
+    <style>        
         
-        *{
-            box-sizing: border-box;
-
+        :root{
+            --maroon:#482222;
+            --dark:#1f0f0f;
+            --gold:#f4b942;
+            --bg:#f1f1f1;
+            --chip:#f3e9e9;
+            --shadow:0 2px 10px rgba(0,0,0,.07);
         }
-
-        body{
-            font-family:Segoe UI;
-            margin: 0;
-        }
-
-        .navbar{
-            display: flex;
-            justify-content: flex-end;
-            background-color: transparent;
-            text-align: center;
-            
-        }
-
-        .navbar a{
-            color: black;
-            padding: 18px 20px;
-            text-decoration: none;
-            text-align: center;
-            
-        }
-
-        .navbar a:hover{
-            /* background-color: darkcyan; */
-            text-decoration: 2px underline;
-            transition: 0.3s ease-in;
-        }
-
-        .myintro{
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            
-        }
-
-        .myimage{
-            height: 600px;
-            flex: 60%;
-            
-        }
-
-        .myimage img{
-            height:400px;
-            width: 75%;
-            margin-top: 40px;
-            margin-left: 40px;
-        }
-
-        .introduction{
-            flex: 40%;
-            background-color:transparent;
-            text-align: center;
-        }
-
-        .introduction a{
-            text-decoration: none;
-            color: black;
-            text-align: center;
-           
-
-        }
-
-        .introduction button{
-            margin-top: 160px;
-            border-radius: 12px;
-            width: 200px;
-            height: 80px;
-            border: solid #482222 ;
-            background-color: transparent;
-            font-style: italic;
-        }
-
-
-        .container{
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .side{
-            flex: 30%;
-            background-color: #f1f1f1;
-            padding: 20px;
-        }
-
-        .main{
-            flex: 70%;
-            background-color: white;
-            padding: 20px;
-        }
-
-        .image{
-            background-color: #aaa;
-            width: 100%;
-            padding: 20px;
-        }
-
-        .projects{
-            padding: 40px 20px;
-        }
-
-        .cards{
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .card{
-            flex: 1 1 250px;
-            background-color: #b6adad;
-            padding: 10px;
-            border-radius: 12px;
-            height: 400px;
-        }
-
-        .card img{
-            height: 140px;
-            width: 75%;
-            margin-left: 45px;
-        }
-
-        footer{
-            padding:20px;
-            text-align: center;
-            background-color: #ddd;
-        }
-
-        @media screen and (max-width:700px) {
-            .container, .navbar{
-                flex-direction: column;
-            }
-        }
-
-
-    </style>
-
-    <!-- second css -->
-
-    <style>
-        html{ 
-            scroll-behavior: smooth;
-        }
-
-        section[id]{
-            scroll-margin-top: 70px;
-        }
-
-        /* navbar overrides*/
-        .navbar{
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: rgba(255, 255, 255, 0.85);
-            -webkit-backdrop-filter: blur(8px);
-            align-items: center;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .navbar.scrolled{
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-        }
-
-        .navbar a{
-            position: relative;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        /* animated hover effect */
-
-        .navbar a:hover{
-            text-decoration: none;
-        }
-
-        .navbar a::after{
-            content: "";
-            position: absolute;
-            left: 20px;
-            right: 20px;
-            bottom: 10px;
-            height: 2px;
-            background: #482222;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .navbar a:hover::after, .navbar a.active::after {
-            transform: scaleX(1);
-        }
-
-        .navbar a.active {
-            color:#482222;font-weight: 700;
-        }
-
-        /* hamburger button */
-        .nav-toggle{
-            display: none;
-            background: none;
-            border: none;
-            font-size: 26px;
-            cursor: pointer;
-            padding: 10px 20px;
-            margin-left: auto;
-            color: black;
-        }
-
-      
-
-        @media screen and (max-width:700px){
-
-            .navbar{
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-
-            .nav-toggle{
-                display: block;
-
-            }
-
-            .navbar a{
-                display: none;
-                width: 100%;
-                padding: 14px 20px;
-                border-top: 1px solid black;
-            }
-
-            .navbar.open a{
-                display: block;
-            }
-
-            .navbar a::after{
-                display: none;
-            }
-
-            .myimage{
-                flex: 100%;
-                height: auto;
-            }
-
-            .myimage img{
-                width: 90%;
-                margin-left: 5%;
-                height: auto;
-            }
-
-            .introduction{
-                flex: 100%;
-            }
-
-            .introduction button{
-                margin-top: 30px;
-            }
-
-            
-        }
-
-        /* Project Portfolio */
-
-        .projects{
-            padding: 50px;
-            background:#f1f1f1 ;
-        }
-
-        .projects h2{
-            text-align: center;
-            margin-top: 0;
-
-        }
-
-        .cards{
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .card{
-            flex: 1 1 250px;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 420px;
-        }
-
-        .card:hover{
-            transform: translateY(-6px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-
-        }
-
-        .card a {
-            color: #482222;
-            font-weight: 600;
-            text-decoration: none;
-
-        }
-
-
-        /* Contact & Social Links */
-        #contact {
-            background: linear-gradient(132deg, #482222, #1f0f0f);
-            color: white;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        #contact .subtitle {
-            opacity: 0.75;
-            margin: -6px 0 36px;
-
-        }
-
-
-        .socials{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 24px;
-            max-width: 900px;
-            margin: 0 auto;
-            
-
-        }
-
-        .social-card{
-            --accent:#fff;
-            position: relative;
-            flex: 1 1 220px;
-            max-width: 270px;
-            padding: 32px 20px 26px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            text-decoration: none;
-            overflow: hidden;
-            transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-
-        }
-
-        .social-card.email {--accent: #f4b942;}
-        .social-card.linkedin{--accent: #4aa3ff;}
-        .social-card.github{--accent: #b78cff;}
-
-
-        /* glow that fills the card from below on hover */
-
-        .social-card::before{
-            content: "";
-            position: absolute;
-            inset: auto 0 0 0;
-            height: 0;
-            background: linear-gradient(to top, var(--accent),transparent);
-            opacity: 0.25;
-            transition: height 0.4s ease;
-
-        }
-
-        .social-card:hover{
-            transform: translateY(-10px) rotate(-1deg);
-            border-color: var(--accent);
-            box-shadow: 0 16px 30px rgba(152, 81, 81, 0.4), 0 0 24px -4px var(--accent);
-
-        }
-
-        .social-card:hover::before{
-            height: 100%;
-        }
-
-        .social-card svg{
-            position: relative;
-            width: 46px;
-            height: 46px;
-            fill: none;
-            stroke: var(--accent);
-            stroke-width: 1.8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            transition: transform 0.5s ease;
-
-        }
-
-        .social-card:hover svg{
-            transform: scale(1.2) rotate(360deg);
-
-        }
-
-        .social-card h3{
-            position: relative;
-            margin: 16px 0 4px;
     
+        * { 
+            box-sizing:border-box; 
         }
-
-        .social-card span{
-            position: relative;
-            font-size: 14px;
-            opacity: 0.8;
-            word-break: break-all;
-
+    
+        html { 
+            scroll-behavior:smooth; 
         }
-
-        .copy-btn{
-            position: relative;
-            margin-top: 16px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--accent);
-            background: transparent;
-            color: white;
-            font-family: inherit;
-            font-size: 13px;
-            cursor: pointer;
-            transition: background 0.3s ease, color 0.3s ease;
-
+    
+        body{ 
+            font-family:"Segoe UI",system-ui,sans-serif; 
+            margin:0; 
+            color:#111; 
+            line-height:1.5; 
         }
-
-        .copy-btn:hover{
-            background: var(--accent);
-            color: #1f0f0f;
+    
+        img{ 
+            max-width:100%; 
         }
-
-        #toast{
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translate(-50%, 20px);
-            background: #222;
-            color: white;
-            padding: 12px 22px;
-            border-radius: 24px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 200;
+    
+        h1,h2,h3,h4,h5{ 
+            line-height:1.25; 
         }
-
-        #toast.show {
-            opacity: 1;
-            transform: translate(-50%, 0);
+    
+        /* technology chips & buttons */
+        .chip{
+            display:inline-block; 
+            padding:4px 11px; 
+            border-radius:999px;
+            background:var(--chip); 
+            color:var(--maroon);
+            font-size:13px; 
+            font-weight:600;
         }
-
-        /* hamburger icon */
+    
+        .chips{ 
+            display:flex; 
+            flex-wrap:wrap; 
+            gap:8px; 
+        }
+    
+        .btn{
+            display:inline-block; 
+            padding:10px 18px; 
+            border-radius:10px;
+            border:2px solid var(--maroon); 
+            background:var(--maroon); 
+            color:#fff;
+            font:inherit; 
+            font-size:14px; 
+            font-weight:600; 
+            text-decoration:none; 
+            cursor:pointer;
+            transition:background .25s, color .25s, transform .25s;
+        }
+    
+        .btn:hover{ 
+            transform:translateY(-2px); 
+        }
+    
+        .btn.ghost{ 
+            background:transparent; 
+            color:var(--maroon); 
+        }
+    
+        .btn.ghost:hover{ 
+            background:var(--maroon); 
+            color:#fff; 
+        }
+    
+        .btn-row{ 
+            display:flex; 
+            flex-wrap:wrap; 
+            gap:10px; 
+            margin-top:auto; 
+            padding-top:6px; 
+        }
+    
+        /* navbar */
+        .navbar{
+            position:sticky; 
+            top:0; 
+            z-index:100;
+            display:flex; 
+            justify-content:flex-end; 
+            align-items:center;
+            background:rgba(255,255,255,.88);
+            -webkit-backdrop-filter:blur(8px); 
+            backdrop-filter:blur(8px);
+            transition:box-shadow .3s;
+        }
+    
+        .navbar.scrolled{ 
+            box-shadow:0 2px 12px rgba(0,0,0,.1); 
+        }
+        .navbar a{
+            position:relative; 
+            padding:18px 20px; 
+            color:#000; 
+            text-decoration:none;
+            font-weight:500; 
+            letter-spacing:.3px;
+        }
+    
+        .navbar a::after{
+            content:""; 
+            position:absolute; 
+            left:20px; 
+            right:20px; 
+            bottom:10px; 
+            height:2px;
+            background:var(--maroon); 
+            transform:scaleX(0); 
+            transform-origin:left; 
+            transition:transform .3s;
+        }
+    
+        .navbar a:hover::after, .navbar a.active::after{ 
+            transform:scaleX(1); 
+        }
+    
+        .navbar a.active{ 
+            color:var(--maroon); 
+            font-weight:700; 
+        }
+    
         .nav-toggle{
-            display: none;
-            position: relative;
-            width: 48px;
-            height: 48px;
-            margin-left: auto;
-            padding: 0;
-            border: 0;
-            cursor: pointer;
-            font-size: 0;
-            color: transparent;
-            background: linear-gradient(#482222, #482222) center / 26px 3px no-repeat;
+            display:none; 
+            margin-left:auto; 
+            padding:8px 18px;
+            background:none; 
+            border:0; 
+            font-size:26px; 
+            color:var(--maroon); 
+            cursor:pointer;
         }
-
-        .nav-toggle::before,
-        .nav-toggle::after{
-            content: "";
-            position: absolute;
-            left: 11px;
-            width: 26px;
-            height: 3px;
-            border-radius: 2px;
-            background: #482222;
-            transition: transform 0.3s ease, top 0.3s ease;
-        }
-
-        .nav-toggle::before{ top: 15px; }
-        .nav-toggle::after{ top: 30px; }
-
-        .navbar.open .nav-toggle{ background-size: 0 0; }
-        .navbar.open .nav-toggle::before{ top: 22.5px; transform: rotate(45deg); }
-        .navbar.open .nav-toggle::after{ top: 22.5px; transform: rotate(-45deg); }
-
-        @media screen and (max-width:700px){
-            .nav-toggle{ display: block; }
-        }
-
-        /* footer */
-        footer{
-            background-color: #1f0f0f;
-            color: #ddd;
-            padding: 50px 20px 20px;
-            text-align: left;
-        }
-
-        .footer-grid{
-            display: flex;
-            flex-wrap: wrap;
-            gap: 36px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .footer-grid > div {
-            flex: 1 1 280px;
-        }
-
-        .footer-grid > .footer-brand {
-            flex: 2 1 280px;
-        }
-
-        footer h3{
-            margin: 0 0 12px;
-            color: #f4b942;
-            font-size: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-
-        }
+    
+        @media (max-width:700px){
+            .navbar{ 
+                flex-wrap:wrap; 
+            }
         
-        footer h4{
-            margin: 0 0 12px;
-            line-height: 1.6;
+            .nav-toggle{ 
+                display:block; 
+            }
+        
+            .navbar a{ 
+                display:none; 
+                width:100%; 
+                padding:14px 20px; 
+                border-top:1px solid #ddd; 
+            }
+        
+            .navbar.open a{ 
+                display:block; 
+            }
+        
+            .navbar a::after{ 
+                display:none; 
+            }
         }
-
-        footer a {
-            display: block;
-            width: fit-content;
-            padding: 4px 0;
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3 ease, transform 0.3 ease;
+    
+        /*  intro  */
+        .myintro{
+            display:grid; 
+            grid-template-columns:1fr 1.2fr; 
+            align-items:center; 
+            gap:40px;
+            max-width:1200px; 
+            margin:0 auto; 
+            padding:40px 24px 60px;
         }
-
-        footer a:hover{
-            color: #f4b942;
-            transform: translateX(4px);
+    
+        .introduction{ 
+            text-align:center; 
         }
-
-        .status{
-            display: inline-flex;
-            align-self: center;
-            gap: 8px;
-            padding: 6px 12px;
-            font-size: 13px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-
+    
+        .introduction h1{ 
+            margin:0 0 6px; 
+            font-size:clamp(28px,4vw,44px); 
         }
-
-        .status::before{
-
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4ade80;
-            box-shadow: 0 0 8px #4ade80;
+    
+        .introduction h5{ 
+            margin:0 0 18px; 
+            font-size:17px; 
+            color:var(--maroon); 
         }
-
-        footer .footer-bottom{
-            max-width: 1000px;
-            margin: 36px auto 0;
-            padding-top: 18px;
-            text-align: center;
-            font-size: 14px;
-            opacity: 0.7;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
+    
+        .introduction p{ 
+            font-size:18px; 
+            margin:0 0 30px; 
         }
-
-        /* back-to-top button */
-        #toTop{
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            width: 44px;
-            height: 44px;
-            border: none;
-            border-radius: 50%;
-            background: #482222;
-            color: #fff;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 150;
+    
+        .myimage img{ 
+            width:100%; 
+            height:auto; 
+            max-height:420px; 
+            object-fit:cover; 
+            display:block; 
+            border-radius:12px; 
         }
-
-        #toTop.show{ 
-            opacity: 1;
-            pointer-events: auto; 
+    
+        @media (max-width:800px){ 
+            .myintro{ 
+                grid-template-columns:1fr; 
+            }
         }
-
-        #toTop:hover{ 
-            transform: translateY(-4px);
+    
+        /* about me */
+        .about-top{ 
+            background:var(--bg); 
+            padding:50px 20px; 
         }
-
-        /* About section: New Stacked layout */
-
-        .container{
-            flex-direction: column;
-        }
-
-
-        .side{
-            flex: none;
-            width: 100%;
-            padding: 50px 20px;
-        }
-
+    
         .about-card{
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-
+            display:flex; 
+            flex-wrap:wrap; 
+            align-items:center; 
+            justify-content:center;
+            gap:40px; 
+            max-width:900px; 
+            margin:0 auto;
         }
-
-        .about-photo {
-            width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 6px solid #fff;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-
-
+    
+        .about-photo{
+            width:220px; 
+            height:220px; 
+            object-fit:cover; 
+            border-radius:50%;
+            border:6px solid #fff; 
+            box-shadow:0 8px 24px rgba(0,0,0,.15);
         }
-
-        .about-text{ flex: 1 1 320px;}
-        .about-text h2{ margin: 0 0 4px;}
-        .about-text h3{ margin: 0 0 14px;color: #482222;}
-        .about-text p{ margin: 0 0 12px; line-height: 1.7;}
-
-        .facts{
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            max-width: 900px;
-            margin: 36px auto 0;
-
+    
+        .about-text{ 
+            flex:1 1 320px; 
         }
-
+    
+        .about-text h2{ 
+            margin:0 0 4px; 
+        }
+    
+        .about-text h3{ 
+            margin:0 0 14px; 
+            color:var(--maroon); 
+        }
+    
+        .about-text p{ 
+            margin:0 0 12px; 
+            line-height:1.7; 
+        }
+    
+        .facts{ 
+            display:flex; 
+            flex-wrap:wrap; 
+            gap:16px; 
+            max-width:900px; 
+            margin:36px auto 0; 
+        }
+    
         .fact{
-            flex: 1 1 220px;
-            padding: 16px 18px;
-            background: #fff;
-            border-left: 4px solid #482222;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.06);
-
+            flex:1 1 220px; 
+            padding:16px 18px; 
+            background:#fff;
+            border-left:4px solid var(--maroon); 
+            border-radius:10px; 
+            box-shadow:var(--shadow);
         }
-
+    
         .fact strong{
-            display: block;
-            margin-bottom: 4px;
-            font-size: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #482222;
-
+            display:block; 
+            margin-bottom:4px; 
+            font-size:12px; 
+            letter-spacing:1px;
+            text-transform:uppercase; 
+            color:var(--maroon);
         }
-
-        .main{
-            flex: none;
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 50px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-            
-
+    
+        /* background, skill groups, education */
+        .panel{
+            background:#fff; 
+            border-radius:14px; 
+            padding:26px; 
+            box-shadow:var(--shadow);
+            display:flex; 
+            flex-direction:column; 
+            gap:12px;
         }
-
-        .topic{
-            padding: 24px;
-            background: #f9f9f9;
-            border-radius: 14px;
-            transition: transform 0.3s, box-shadow 0.3s ease;
+    
+        .panel h2{ 
+            margin:0; 
+            font-size:20px; 
+            letter-spacing:.5px; 
         }
-
-        .topic:hover{
-            transform: translateY(-6px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    
+        .panel .sub{ 
+            margin:0; 
+            color:var(--maroon); 
+            font-weight:600; 
+            font-size:14px; 
         }
-
-        .topic h2{
-            margin-top: 0;
+    
+        .panel p{ 
+            margin:0; 
+            line-height:1.7; 
         }
-
-        /* project portfolio image */
-        .image{
-            background-color: transparent;
+    
+        .skill-group + .skill-group{ 
+            margin-top:12px; 
         }
-
-        .image img{
-            height:180px;
-            width:100%;
-
+    
+        .skill-group h4{
+            margin:0 0 6px; 
+            font-size:12px; 
+            letter-spacing:1px; 
+            text-transform:uppercase; 
+            color:#666;
         }
-
-
-        /* landing page font alternations */
-        .introduction p{
-            font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
-            font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.35rem);
-            line-height: 1.7;
-            color: #333;
-            max-width: 34em;
-            margin: 0 auto;
+    
+        .edu-item{ 
+            display:flex; 
+            gap:14px; 
+            align-items:flex-start; 
         }
-
-        .introduction h5{
-            font-size: 1.1rem;
-            color: #482222;
+    
+        .edu-item + .edu-item{ 
+            margin-top:12px; 
         }
-
+    
+        .year{
+            flex:none; 
+            padding:4px 10px; 
+            border-radius:8px; 
+            background:var(--maroon); 
+            color:#fff;
+            font-size:12px; 
+            font-weight:700; 
+            white-space:nowrap;
+        }
+    
+        .edu-item strong{ 
+            display:block; 
+        }
+    
+        .edu-item small{ 
+            color:#555; 
+        }
+    
+        /* projects */
+        .projects{ 
+            background:var(--bg); 
+            padding:60px 20px; 
+        }
+    
+        .projects > h2{ 
+            text-align:center; 
+            margin:0 0 60px; 
+        }
+    
+        .proj-wrap{ 
+            max-width:1000px; 
+            margin:0 auto; 
+        }
+    
+    
+        .shot{ 
+            background:#e9e2e2; 
+            overflow:hidden; 
+        }
+    
+        .shot img{ 
+            display:block; 
+            width:100%; 
+            height:100%; 
+            object-fit:cover; 
+        }
+    
+        .shot.ph{
+            display:grid; 
+            place-items:center; 
+            min-height:150px;
+            background:linear-gradient(135deg,var(--maroon),var(--dark));
+            color:var(--gold); 
+            font-weight:700; 
+            letter-spacing:.5px; 
+            font-size:20px;
+        }
+    
+        .pcard{
+            display:flex; 
+            flex-direction:column; 
+            background:#fff; 
+            border-radius:14px;
+            overflow:hidden; 
+            box-shadow:var(--shadow); 
+            transition:transform .3s, box-shadow .3s;
+        }
+    
+        .pcard:hover{ 
+            transform:translateY(-6px); 
+            box-shadow:0 10px 20px rgba(0,0,0,.12); 
+        }
+    
+        .pcard .shot{ 
+            aspect-ratio:16/9; 
+        }
+    
+        .pcard .body{ 
+            display:flex; 
+            flex-direction:column; 
+            gap:10px; 
+            padding:20px; 
+            flex:1; 
+        }
+    
+        .pcard h3{ 
+            margin:0; 
+            font-size:19px; 
+        }
+    
+        .pcard p{ 
+            margin:0; 
+            color:#333; 
+        }
+    
+    
+        /* contact me */
+        #contact{
+            background:linear-gradient(132deg,var(--maroon),var(--dark));
+            color:#fff; 
+            padding:60px 20px; 
+            text-align:center;
+        }
+    
+        #contact h2{ 
+            margin:0 0 8px; 
+        }
+    
+        #contact .subtitle{ 
+            opacity:.75; 
+            margin:0 0 36px; 
+        }
+    
+        .socials{
+            display:flex; 
+            flex-wrap:wrap; 
+            justify-content:center; 
+            gap:24px; 
+            max-width:900px; 
+            margin:0 auto;
+        }
+    
+        .social-card{
+            --accent:#fff; 
+            position:relative; 
+            flex:1 1 220px; 
+            max-width:270px;
+            padding:32px 20px 26px; 
+            border-radius:18px; 
+            overflow:hidden;
+            background:rgba(255,255,255,.07); 
+            border:1px solid rgba(255,255,255,.15);
+            color:#fff; 
+            text-decoration:none;
+            transition:transform .35s, border-color .35s, box-shadow .35s;
+        }
+    
+        .social-card.email{ 
+            --accent:#f4b942; 
+        }
+    
+        .social-card.linkedin{ 
+            --accent:#4aa3ff; 
+        }
+    
+        .social-card.github{ 
+            --accent:#b78cff; 
+        }
+    
+        .social-card:hover{
+            transform:translateY(-8px);
+            border-color:var(--accent);
+            box-shadow:0 16px 30px rgba(0,0,0,.35), 0 0 24px -4px var(--accent);
+        }
+    
+        .social-card a{ 
+            color:inherit; 
+            text-decoration:none; 
+            display:block; 
+        }
+    
+        .social-card svg{
+            width:46px; 
+            height:46px; 
+            fill:none; 
+            stroke:var(--accent); 
+            stroke-width:1.8;
+            stroke-linecap:round; 
+            stroke-linejoin:round; 
+            transition:transform .5s;
+        }
         
-
+        .social-card:hover svg{ 
+            transform:scale(1.15) rotate(360deg); 
+        }
+    
+        .social-card h3{ 
+            margin:16px 0 4px; 
+        }
+    
+        .social-card span{ 
+            font-size:14px; 
+            opacity:.8; 
+            word-break:break-all; 
+        }
+    
+        .visit{
+            display:inline-block; 
+            margin-top:16px; 
+            padding:8px 16px; 
+            border-radius:20px;
+            border:1px solid var(--accent); 
+            font-size:13px;
+        }
+    
+        .copy-btn{
+            margin-top:16px; 
+            padding:8px 16px; 
+            border-radius:20px; 
+            border:1px solid var(--accent);
+            background:transparent; 
+            color:#fff; 
+            font:inherit; 
+            font-size:13px; 
+            cursor:pointer;
+            transition:background .3s, color .3s;
+        }
+    
+        .copy-btn:hover{ 
+            background:var(--accent); 
+            color:var(--dark); 
+        }
+    
+        #toast{
+            position:fixed; 
+            bottom:84px; 
+            left:50%; 
+            transform:translate(-50%,20px);
+            background:#222; 
+            color:#fff; 
+            padding:12px 22px; 
+            border-radius:24px;
+            opacity:0; 
+            pointer-events:none; 
+            transition:opacity .3s, transform .3s; 
+            z-index:400;
+        }
+    
+        #toast.show{ 
+            opacity:1; 
+            transform:translate(-50%,0); }
         
-
+        /* footer */
+        footer{ 
+            background:var(--dark); 
+            color:#ddd; 
+            padding:50px 20px 90px; 
+        }
+    
+        .footer-grid{ 
+            display:flex; 
+            flex-wrap:wrap; 
+            gap:36px; 
+            max-width:1000px; 
+            margin:0 auto; 
+        }
+    
+        .footer-grid > div{ 
+            flex:1 1 220px; 
+        }
+    
+        .footer-grid > .footer-brand{ 
+            flex:2 1 280px; 
+        }
+    
+        footer h3{ 
+            margin:0 0 12px; 
+            color:var(--gold); 
+            font-size:12px; 
+            letter-spacing:1px; 
+            text-transform:uppercase; 
+        }
+    
+        footer h4{ 
+            margin:0 0 12px; 
+        }
+    
+        footer a{
+            display:block; 
+            width:fit-content; 
+            padding:4px 0; 
+            color:#ddd; 
+            text-decoration:none;
+            transition:color .3s, transform .3s;
+        }
+    
+        footer a:hover{ 
+            color:var(--gold); 
+            transform:translateX(4px); 
+        }
+    
+        .status{
+            display:inline-flex; 
+            align-items:center; 
+            gap:8px; 
+            padding:6px 12px; 
+            font-size:13px;
+            border:1px solid rgba(255,255,255,.2); 
+            border-radius:20px;
+        }
+    
+        .status::before{
+            content:""; 
+            width:8px; 
+            height:8px; 
+            border-radius:50%;
+            background:#4ade80; 
+            box-shadow:0 0 8px #4ade80;
+        }
+    
+        .footer-bottom{
+            max-width:1000px; 
+            margin:36px auto 0; 
+            padding-top:18px; 
+            text-align:center;
+            font-size:14px; 
+            opacity:.7; 
+            border-top:1px solid rgba(255,255,255,.15);
+        }
+    
+        /* background, skills & education positioning */
+        .duo{
+            display:grid; 
+            grid-template-columns:1.1fr 1fr; 
+            gap:24px;
+            max-width:1100px; 
+            margin:0 auto; 
+            padding:50px 20px;
+        }
+    
+        .duo .stack{ 
+            display:grid; 
+            gap:24px; 
+            align-content:start; 
+        }
         
+        .story img{ 
+            width:100%; 
+            aspect-ratio:16/10; 
+            object-fit:cover; 
+            border-radius:10px; 
         
-
-         
-
+        }
+        @media (max-width:800px){ 
+            .duo{ 
+                grid-template-columns:1fr; 
+            } 
+        }
+    
+    
+    
+        /* projects : image and text alternate sides */
+        .case{
+            display:grid; 
+            grid-template-columns:1fr 1fr; 
+            gap:36px; align-items:center; 
+            margin-bottom:56px;
+        }
+    
+        .case:last-child{ 
+            margin-bottom:0; 
+        }
+    
+        .case .shot{ 
+            aspect-ratio:16/10; 
+            border-radius:14px; 
+            box-shadow:var(--shadow); 
+        }
+    
+        .case:nth-child(even) .shot{ 
+            order:2; 
+        }
+    
+        .case .body{ 
+            display:flex; 
+            flex-direction:column; 
+            gap:12px; 
+        }
+    
+        .case .num{ 
+            font-size:13px; 
+            font-weight:700; 
+            letter-spacing:1px; 
+            color:var(--maroon); 
+        }
+    
+        .case h3{ 
+            margin:0; 
+            font-size:24px; 
+        }
+    
+        .case p{ 
+            margin:0; 
+            line-height:1.7; 
+        }
+    
+        .case dl{ 
+            margin:0; 
+            display:grid; 
+            gap:4px; 
+        }
+    
+        .case dt{ 
+            font-size:12px; 
+            font-weight:700; 
+            letter-spacing:1px; 
+            text-transform:uppercase; 
+            color:#666; 
+        }
+    
+        .case dd{ 
+            margin:0 0 6px; 
+        }
+    
+        @media (max-width:760px){
+            .case{ 
+                grid-template-columns:1fr; 
+                gap:18px; 
+            }
+        
+            .case:nth-child(even) .shot{ 
+                order:0; 
+            }
+        }
+    
+    
+        /* contact me : communication links & contact form */
+        .contact-grid{
+            display:grid; 
+            grid-template-columns:1fr 1fr; 
+            gap:24px; 
+            align-items:stretch;
+            max-width:960px; 
+            margin:0 auto; 
+            text-align:left;
+        }
+    
+        .contact-grid .socials{
+            flex-direction:column; 
+            flex-wrap:nowrap; 
+            justify-content:flex-start;
+            gap:14px; 
+            max-width:none; 
+            margin:0;
+        }
+    
+        .contact-grid .social-card{
+            flex:none; 
+            max-width:none; 
+            display:flex; 
+            align-items:center; 
+            gap:14px;
+            padding:16px 18px; 
+            text-align:left;
+        }
+    
+        .contact-grid .social-card:hover{ 
+            transform:translateX(4px); 
+        }
+    
+        .contact-grid .social-card svg{ 
+            flex:none; 
+            width:34px; 
+            height:34px; 
+        }
+    
+        .sc-main{ 
+            display:flex !important; 
+            align-items:center; 
+            gap:14px; 
+            flex:1; 
+            min-width:0; 
+        }
+    
+        .sc-text{ 
+            flex:1; 
+            min-width:0; 
+        }
+    
+        .contact-grid .social-card h3{ 
+            margin:0 0 2px; 
+            font-size:16px; 
+        }
+    
+        .sc-text span{ 
+            display:block; 
+        }
+    
+        .contact-grid .visit{ 
+            margin:0; 
+            white-space:nowrap; 
+            padding:6px 12px; 
+            font-size:12px; 
+            opacity:1; 
+        }
+    
+        .contact-grid .copy-btn{ 
+            margin:0; 
+            white-space:nowrap; 
+        }
+    
+        .contact-form{
+            display:flex; 
+            flex-direction:column; 
+            gap:6px;
+            padding:24px; 
+            border-radius:18px;
+            background:rgba(255,255,255,.07); 
+            border:1px solid rgba(255,255,255,.15);
+        }
+    
+        .contact-form h3{ 
+            margin:0 0 8px; 
+            font-size:18px; 
+        }
+    
+        .contact-form label{ 
+            font-size:13px; 
+            color:#d9c7c7; 
+            margin-top:6px; 
+        }
+    
+        .contact-form input,
+        .contact-form textarea{
+            width:100%; 
+            padding:10px 12px; 
+            border-radius:8px; 
+            font:inherit; 
+            font-size:15px;
+            color:#fff; 
+            background:rgba(0,0,0,.28); 
+            border:1px solid rgba(255,255,255,.22);
+        }
+    
+        .contact-form textarea{ 
+            min-height:120px; 
+            resize:vertical; 
+        }
+    
+        .contact-form ::placeholder{ 
+            color:#b9a3a3; 
+        }
+    
+        .contact-form input:focus,
+        .contact-form textarea:focus{ 
+            outline:2px solid var(--gold); 
+            outline-offset:1px; 
+            border-color:transparent; 
+        }
+    
+        .contact-form .invalid{ 
+            border-color:#ff8a8a; 
+        }
+    
+        .form-error{ 
+            margin:8px 0 0; 
+            font-size:14px; 
+            color:#ffb3b3; 
+        }
+    
+        .send-btn{
+            margin-top:12px; 
+            align-self:flex-start; 
+            padding:11px 24px; 
+            border:0; 
+            border-radius:8px;
+            background:var(--gold); 
+            color:var(--dark); 
+            font:inherit; 
+            font-size:15px; 
+            font-weight:600;
+            cursor:pointer; 
+            transition:transform .25s, background .25s;
+        }
+    
+        .send-btn:hover{ 
+            transform:translateY(-2px); 
+            background:#f7c869; 
+        }
+    
+        .send-btn:focus-visible{ 
+            outline:2px solid #fff; 
+            outline-offset:2px; 
+        }
+    
+        .send-btn[disabled]{ 
+            opacity:.6; 
+            cursor:wait; 
+            transform:none; 
+        }
+    
+        .hp{ 
+            position:absolute; 
+            left:-9999px; 
+            width:1px; 
+            height:1px; 
+            overflow:hidden; 
+        }
+    
+        @media (max-width:800px){
+            .contact-grid{ 
+                grid-template-columns:1fr; 
+            }
+        }
+    
+        .contact-grid .social-card span{ 
+            word-break:normal; 
+            overflow-wrap:anywhere; 
+        }
+    
+        @media (max-width:480px){
+            .contact-grid .social-card{ 
+                flex-wrap:wrap; 
+            }
+        
+            .sc-main{ 
+                flex:1 1 100%; 
+            }
+        
+            .contact-grid .sc-text{ 
+                flex:1 1 140px; 
+            }
+        
+            .contact-grid .visit, .contact-grid .copy-btn{ 
+                margin-left:48px; 
+            }
+        }
+        
     </style>
-
-
-    <!-- Navigation Bar -->
-    <div class="navbar">
+        
+    <!-- navbar -->
+    <nav class="navbar">
         <a href="#myintro">Home</a>
-        <a href="#side">About</a>
+        <a href="#about">About</a>
         <a href="#projects">Project Portfolio</a>
         <a href="#contact">Contact</a>
+    </nav>
+    
+    <!-- intro -->
+<header class="myintro" id="myintro">
+    <div class="introduction">
+        <h1>Talisman Molepo</h1>
+        <h5>Software Engineer Student</h5>
+        <p>I design and build clean, responsive &amp; user friendly websites. Browse through my portfolio, or download my CV to view my qualifications.</p>
+        
+        <a class="btn" href="documentation/Talisman-Molepo-CV.pdf" download>Download CV</a>
+    </div>
+    <div class="myimage">
+        <img src="https://talismanmolepo.github.io/personal-portfolio/images/9416BCCB-F05D-45E3-A422-C441677484B8.JPG.jpeg" alt="self-potrait">
+    </div>
+</header>
+
+<!-- about me -->
+<section id="about">
+
+    <!-- shared top part -->
+    <div class="about-top">
+        <div class="about-card">
+            <img class="about-photo"
+                 src="https://talismanmolepo.github.io/personal-portfolio/images/9416BCCB-F05D-45E3-A422-C441677484B8.JPG.jpeg"
+                 alt="Talisman Molepo working at a laptop">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <h3>Nice to meet you!</h3>
+                <p>I'm Talisman Molepo, a second year Software Engineering student at CTU Training Solutions, who enjoys solving problems with code and design.</p>
+                <p>I am motivated by learning new technologies, collaborating with others and building products that make everyday tasks easier.</p>
+            </div>
+        </div>
+        <div class="facts">
+            <div class="fact"><strong>Based in</strong>Polokwane, South Africa</div>
+            <div class="fact"><strong>Languages</strong>Northern Sotho, English</div>
+            <div class="fact"><strong>Open to</strong>Employment &amp; Internships</div>
+        </div>
     </div>
 
-    <div class="myintro" id="myintro">
-         <div class="introduction">
-            <h1>INTRODUCTION</h1>
-            <h5>Talisman Molepo | Software Engineer Student</h5>
-            <p>I design and build clean, responsive & user friendly websites. Browse through my portfolio, or download my CV to view my qualifications.</p>
-            
+    <div class="duo">
 
-            <a href="documentation/Molepo Talisman CTU Student CV[1] (1).pdf" download><button>Download CV</button></a>
-        </div>
-        <div class="myimage"><img src="images/4c5bcbf41b8dda721bb02fcaf9aa2f9e.jpg"  alt="landing_page.png"></div>
-       
-    </div>
-
-    <!-- Content Container -->
-    <div class="container" id="side">
-
-        <!-- About Me -->
-        <div class="side" >
-
-            <div class="about-card">
-                <img src="images/9416BCCB-F05D-45E3-A422-C441677484B8.JPG.jpeg" alt="Self Portrait" class="about-photo">
-            
-
-                <div class="about-text">
-                    <h2>About Me</h2>
-                    <h3>Nice to meet you!</h3>
-                    <p>I'm Talisman Molepo, a second year Software Engineering student at CTU Training Solutions, who enjoys solving problems with code and design. </p>
-                    <p>I am motivated by learning new technologies, collaborating with others and building products that make everyday tasks easier.</p>
-                </div>
-            </div>
-
-
-            <div class="facts">
-                <div class="fact"><strong>Based in</strong><span>Polokwane, South Africa</span></div>
-                <div class="fact"><strong>Languages</strong><span>Northern Sotho, English</span></div>
-                <div class="fact"><strong>Open to</strong><span>Employment & Internships</span></div>
-            </div>
-
-
-        </div>
-
-        <!-- Background, Skills & Education -->
-        <div class="main">
-
-            <article class="topic">
-                <h2 id="background">BACKGROUND</h2>
-                <h5>Journey</h5>
-
-                <div class="image"> 
-                    <img src="images/IMG_3916.JPG.jpeg" alt="background.png">
-                </div>
-                <p>I always had an obsession with computers growing up. I shared a lot of my hours engaging with the screen and I could argue that my tech journey began before I was enrolled for a course. </p>
-                <p></p>
-
+            <article class="panel story">
+                <h2>BACKGROUND</h2>
+                <p class="sub">From curiosity to career</p>
+                <img src="https://talismanmolepo.github.io/personal-portfolio/images/IMG_3916.JPG.jpeg"
+                     alt="Talisman looking down in front of a painting" loading="lazy">
+                <p>I always had an obsession with computers growing up. I spent a lot of my hours on the screen, and I could argue that my tech journey began before I enrolled for a course.</p>
+                <p>Today I'm looking for an internship or junior role where I can build real products and keep learning.</p>
             </article>
 
+            <div class="stack">
+                <article class="panel">
+                    <h2>SKILLS</h2>
+                    <div class="skill-group"><h4>Front-end</h4>
+                        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div></div>
+                    <div class="skill-group"><h4>Back-end</h4>
+                        <div class="chips"><span class="chip">Node.js</span></div></div>
+                    <div class="skill-group"><h4>Tools &amp; practices</h4>
+                        <div class="chips"><span class="chip">Git &amp; GitHub</span><span class="chip">VS Code</span><span class="chip">Responsive design</span><span class="chip">Debugging</span></div></div>
+                </article>
 
-            <article class="topic">
-                <h2 id="skills">SKILLS</h2>
-                <h5>Technical and professional strengths</h5>
-                
-                <div class="image">
-                    <img src="images/html css and javascript.jpeg" alt="skills.png">
-                </div>
-
-               
-                <p><b>Front-end</b>: HTML, CSS, JavaScript.</p>
-                <p><b>Tools</b>: Git and GitHub, VS Code, GitHub Pages</p>
-                <p><b>Practices</b>: Responsive design, clear readable code, debugging, version control</p>
-
-            </article>
-
-
-            <article class="topic">
-                <h2 id="education">EDUCATION</h2>
-                <h5>Qualification, Institution</h5>
-
-                <div class="image">
-                    <img src="images/coding-classroom-activity-stockcake.jpg" alt="Education.png">
-                </div>
-
-            
-                <p><b>OC: Software Engineer</b>, CTU Training Solution | 2025 - present</p>
-                <p><b>Programming Foundation</b>, CTU Training Solution | 2024</p>
-             
-
-            </article>
-
+                <article class="panel">
+                    <h2>EDUCATION</h2>
+                    <div>
+                        <div class="edu-item">
+                            <span class="year">2025 – now</span>
+                            <div><strong>OC: Software Engineer</strong><small>CTU Training Solutions</small></div>
+                        </div>
+                        <div class="edu-item">
+                            <span class="year">2024</span>
+                            <div><strong>Programming Foundation</strong><small>CTU Training Solutions</small></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
 
         </div>
+    
 
-
-    </div>
-
-    <!-- Project Portfolio Section  -->
-    <section class="projects" id="projects">
-        <h2>PROJECT PORTFOLIO</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>GLEN ARTWORKS</h3>
-                <img src="images/Screenshot 2026-11-20 043908.png" alt="project1.png">
-                <p>Art Portfolio Website</p>
-                <p>Tools Used : HTML, CSS, JavaScript</p>
-                <a href="https://github.com/talismanmolepo/kabelo-glen-artworks" target="_blank" rel="noopener">View project &rarr;</a>
-            </div>
-
-            <div class="card">
-                <h3>Polokwane Student Accomodation Finder</h3>
-                <img src="images/Screenshot 2026-11-20 044805.png" alt="project2.png">
-                <p>Accomodation finder for students studying in Polokwane</p>
-                <p>Tools Used: HTML, CSS, JavaScript, Node.js</p>
-                <a href="https://github.com/talismanmolepo/Polokwane-Accommodation-Finder" target="_blank" rel="noopener">View project &rarr;</a>
-            </div>
-            
-
-           
-            <div class="card">
-                <h3>To-Do list</h3>
-                <img src="https://github.com/talismanmolepo/cheeky-to-do-list" alt="project3.png">
-                <p>Simple to do list</p>
-                <p>Tools Used: HTML, CSS, JavaScript</p>
-                
-                <a href="https://github.com/talismanmolepo/cheeky-to-do-list" target="_blank" rel="noopener">View project &rarr;</a>
-            </div>
-        </div>
     </section>
 
-    <!-- Contact section -->
-    <section class="contact" id="contact">
-        <h2>LET'S CONNECT</h2>
-        <p class="subtitle">Pick your favourite way to reach me</p>
+<!-- projects -->
 
+<section class="projects" id="projects">
+    <h2>PROJECT PORTFOLIO</h2>
+    <div class="proj-wrap">
+
+        <article class="case">
+                <div class="shot">
+                    <img src="https://talismanmolepo.github.io/personal-portfolio/images/Screenshot%202026-11-20%20044805.png"
+                         alt="Polokwane Student Living homepage" loading="lazy">
+                </div>
+                <div class="body">
+                    <span class="num">01</span>
+                    <h3>Polokwane Student Accommodation Finder</h3>
+                    <p>A search-and-browse site for students looking for accredited housing near campus.</p>
+                    <dl>
+                        <dt>The problem</dt>
+                        <dd>Students struggle to find verified, NSFAS-accredited places in one spot.</dd>
+                        <dt>What I built</dt>
+                        <dd>A listings site with a favourites list, backed by Node.js.</dd>
+                    </dl>
+                    <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Node.js</span></div>
+                    <div class="btn-row">
+                        <a class="btn" href="#">Live demo</a>
+                        <a class="btn ghost" href="https://github.com/talismanmolepo/Polokwane-Accommodation-Finder">GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="case">
+                <div class="shot">
+                    <img src="https://talismanmolepo.github.io/personal-portfolio/images/Screenshot%202026-11-20%20043908.png"
+                         alt="Glen Artworks homepage with a gallery of paintings" loading="lazy">
+                </div>
+                <div class="body">
+                    <span class="num">02</span>
+                    <h3>Glen Artworks</h3>
+                    <p>A portfolio website for an artist.</p>
+                    <dl>
+                        <dt>The problem</dt>
+                        <dd>An artist needed an online space that puts the artwork first.</dd>
+                        <dt>What I built</dt>
+                        <dd>A clean gallery layout that stays out of the paintings' way.</dd>
+                    </dl>
+                    <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+                    <div class="btn-row">
+                        <a class="btn" href="#">Live demo</a>
+                        <a class="btn ghost" href="https://github.com/talismanmolepo/kabelo-glen-artworks">GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="case">
+                <div class="shot ph">✓ To-Do List</div>
+                <div class="body">
+                    <span class="num">03</span>
+                    <h3>To-Do List</h3>
+                    <p>A simple task manager.</p>
+                    <dl>
+                        <dt>The goal</dt>
+                        <dd>Practise DOM manipulation and event handling in plain JavaScript.</dd>
+                        <dt>What I built</dt>
+                        <dd>A list where tasks can be added and ticked off.</dd>
+                    </dl>
+                    <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+                    <div class="btn-row">
+                        <a class="btn" href="#">Live demo</a>
+                        <a class="btn ghost" href="https://github.com/talismanmolepo/cheeky-to-do-list">GitHub</a>
+                    </div>
+                </div>
+            </article>
+        
+
+    </div>
+</section>
+
+<!-- contact me -->
+<section id="contact">
+    <h2>LET'S CONNECT</h2>
+    <p class="subtitle">Pick your favourite way to reach me</p>
+
+    <div class="contact-grid">
         <div class="socials">
-            <!-- Email -->
             <div class="social-card email">
-                <a href="mailto:mokwatzz@icloud.com" style="color: inherit;text-decoration: none;display: block;">
+                <a class="sc-main" href="mailto:mokwatzz@icloud.com">
                     <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    <h3>Email</h3>
-                    <span>mokwatzz@icloud.com</span>
+                    <div class="sc-text"><h3>Email</h3><span>mokwatzz@icloud.com</span></div>
                 </a>
-                <button class="copy-btn" data-copy="mokwatzz@icloud.com">Copy Email</button>
+                <button type="button" class="copy-btn" data-copy="mokwatzz@icloud.com">Copy Email</button>
             </div>
 
-            <!-- LinkedIn -->
-            <a class="social-card linkedin" href="https://www.linkedin.com/in/talisman-molepo-41414b307?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener">
+            <a class="social-card linkedin" href="https://www.linkedin.com/in/talisman-molepo-41414b307" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                <h3>LinkedIn</h3>
-                <span>/in/talisman-molepo</span>
+                <div class="sc-text"><h3>LinkedIn</h3><span>/in/talisman-molepo</span></div>
+                <span class="visit">Visit profile</span>
             </a>
 
-            <!-- GitHub -->
             <a class="social-card github" href="https://github.com/talismanmolepo" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                <h3>GitHub</h3>
-                <span>/talismanmolepo</span>
+                <div class="sc-text"><h3>GitHub</h3><span>/talismanmolepo</span></div>
+                <span class="visit">View repos</span>
             </a>
-
         </div>
 
-    </section>
+        <form class="contact-form" id="contactForm" novalidate>
+            <h3>Send me a message</h3>
 
-    <div id="toast">Email copied to clipboard!</div>
-    
-    <footer>
-        <div class="footer-grid">
-
-            <div class="footer-brand">
-                <h3>Talisman Molepo</h3>
-                <p>Software Engineer based in Polokwane, South Africa. I build clean, accessible and user-focused websites.</p>
-                <span class="status">Open to oppurtunies</span>
+            <div class="hp" aria-hidden="true">
+                <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
             </div>
 
-            <div>
-                <h4>Quick Links</h4>
-                <a href="#myintro">Home</a>
-                <a href="#side">About</a>
-                <a href="#projects">Project Portfolio</a>
-                <a href="#contact">Contact</a>
-            </div>
+            <label for="cf-name">Your name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Jane Doe" required>
 
-            <div>
-                <h4>Find me</h4>
-                <a href="malito:mokwatzz@icloud.com">Email</a>
-                <a href="https://www.linkedin.com/in/talisman-molepo-41414b307?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener">LinkedIn</a>
-                <a href="https://github.com/talismanmolepo" target="_blank" rel="noopener">GitHub</a>
-            </div>
+            <label for="cf-email">Your email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="jane@company.com" required>
 
+            <label for="cf-message">Your message</label>
+            <textarea id="cf-message" name="message" rows="5" placeholder="Tell me about the role or project" required></textarea>
+
+            <p class="form-error" id="cf-error" role="alert" hidden></p>
+            <button type="submit" class="send-btn">Send message</button>
+        </form>
+    </div>
+</section>
+
+<div id="toast">Email copied to clipboard!</div>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>Talisman Molepo</h3>
+            <p>Software Engineer based in Polokwane, South Africa. I build clean, accessible and user-focused websites.</p>
+            <span class="status">Open to opportunities</span>
         </div>
+        <div>
+            <h4>Quick Links</h4>
+            <a href="#myintro">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Project Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div>
+            <h4>Find me</h4>
+            <a href="mailto:mokwatzz@icloud.com">Email</a>
+            <a href="https://www.linkedin.com/in/talisman-molepo-41414b307" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/talismanmolepo" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </div>
+    <p class="footer-bottom">&copy; <span id="year">2026</span> Talisman Molepo. All rights reserved.</p>
+</footer>
 
-        <p class="footer-button">&copy;<span id="year">2026 </span>Talisman Molepo. All rights reserved.</p>
-       
-    </footer>
+<script>
+const navbar = document.querySelector(".navbar");
+const navLinks = [...navbar.querySelectorAll("a")];
 
-    <button id="toTop" aria-label="Back to top">&uarr;</button>
+/* hamburger for mobile */
+const toggle = document.createElement("button");
+toggle.className = "nav-toggle";
+toggle.setAttribute("aria-label", "Toggle menu");
+toggle.setAttribute("aria-expanded", "false");
+toggle.innerHTML = "&#9776;";
+navbar.prepend(toggle);
 
+function setMenu(open){
+    navbar.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.innerHTML = open ? "&#10005;" : "&#9776;";
+}
+toggle.addEventListener("click", e => { e.stopPropagation(); setMenu(!navbar.classList.contains("open")); });
+navLinks.forEach(a => a.addEventListener("click", () => setMenu(false)));
+document.addEventListener("click", e => { if (!navbar.contains(e.target)) setMenu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+window.addEventListener("resize", () => { if (window.innerWidth > 700) setMenu(false); });
 
-    <script>
-    
-        const navbar = document.querySelector(".navbar");
-        const navLinks = [...navbar.querySelectorAll("a")];
+/* nav links -> sections */
+const items = navLinks
+    .map(a => {
+        const href = a.getAttribute("href") || "";
+        return { link:a, target: href.length > 1 ? document.getElementById(href.slice(1)) : null };
+    })
+    .filter(i => i.target);
 
-        // Hamburger button for mobile
-        const toggle = document.createElement("button");
-        toggle.className = "nav-toggle";
-        toggle.setAttribute("aria-label", "Toggle menu");
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.innerHTML = "&#9776;";
-        navbar.prepend(toggle);
+function setScrollOffsets(){
+    const h = navbar.offsetHeight + 10;
+    items.forEach(i => { i.target.style.scrollMarginTop = h + "px"; });
+}
+setScrollOffsets();
+window.addEventListener("resize", setScrollOffsets);
 
-        function setMenu(open) {
-            navbar.classList.toggle("open", open);
-            toggle.setAttribute("aria-expanded", String(open));
-            toggle.innerHTML = open ? "&#10005;" : "&#9776;";   
+/* shadow + active link */
+function updateNav(){
+    navbar.classList.toggle("scrolled", window.scrollY > 10);
+    const trigger = navbar.offsetHeight + 40;
+    let current = items[0];
+    items.forEach(i => { if (i.target.getBoundingClientRect().top <= trigger) current = i; });
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (atBottom && items.length) current = items[items.length - 1];
+    navLinks.forEach(a => a.classList.toggle("active", !!current && a === current.link));
+}
+window.addEventListener("scroll", updateNav, { passive:true });
+window.addEventListener("resize", updateNav);
+updateNav();
+
+/* copy email */
+const toast = document.getElementById("toast");
+document.querySelectorAll(".copy-btn").forEach(btn => {
+    btn.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(btn.dataset.copy);
+            flash("Email copied to clipboard!");
+        } catch (e) {
+            window.location.href = "mailto:" + btn.dataset.copy;
+        }
+    });
+});
+
+    /* toast helper */
+    function flash(msg){
+        toast.textContent = msg;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2800);
+    }
+
+    /* contact form */
+    // TODO: create a free form at formspree.io (or web3forms.com) and paste your endpoint here.
+    const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+    const MY_EMAIL = "mokwatzz@icloud.com";
+
+    const form = document.getElementById("contactForm");
+    const errBox = document.getElementById("cf-error");
+    const sendBtn = form.querySelector(".send-btn");
+
+    function showError(msg, field){
+        errBox.textContent = msg;
+        errBox.hidden = false;
+        if (field){ field.classList.add("invalid"); field.focus(); }
+    }
+    form.addEventListener("input", e => {
+        e.target.classList.remove("invalid");
+        errBox.hidden = true;
+    });
+
+    form.addEventListener("submit", async e => {
+        e.preventDefault();
+        errBox.hidden = true;
+        form.querySelectorAll(".invalid").forEach(f => f.classList.remove("invalid"));
+
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        if (!name)    return showError("Enter your name.", form.name);
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError("Enter a valid email address.", form.email);
+        if (message.length < 10) return showError("Write a short message (at least 10 characters).", form.message);
+
+        if (form._gotcha.value){ form.reset(); flash("Message sent!"); return; }   // spam trap
+
+        // No endpoint yet: open the visitor's email app with the message filled in
+        if (FORM_ENDPOINT.includes("YOUR_FORM_ID")){
+            const subject = encodeURIComponent("Portfolio message from " + name);
+            const body = encodeURIComponent(message + "\n\n" + name + "\n" + email);
+            window.location.href = "mailto:" + MY_EMAIL + "?subject=" + subject + "&body=" + body;
+            flash("Opening your email app…");
+            return;
         }
 
-        toggle.addEventListener("click", e => {
-            e.stopPropagation();
-            setMenu(!navbar.classList.contains("open"));
-        });
-
-        navLinks.forEach(a => a.addEventListener("click", () => setMenu(false)));          
-        document.addEventListener("click", e => { if (!navbar.contains(e.target)) setMenu(false); });  
-        document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });        
-        window.addEventListener("resize", () => { if (window.innerWidth > 700) setMenu(false); });     
-
-        // Build the list of nav links and the section each one points to
-        const items = navLinks
-            .map(a => {
-                const href = a.getAttribute("href") || "";
-                return { link: a, target: href.length > 1 ? document.getElementById(href.slice(1)) : null };
-            })
-            .filter(i => i.target);
-
-        // keep the sticky navbar from covering the top of a section after a jump
-        function setScrollOffsets() {
-            const h = navbar.offsetHeight + 10;
-            items.forEach(i => { i.target.style.scrollMarginTop = h + "px"; });
-        }
-        setScrollOffsets();
-        window.addEventListener("resize", setScrollOffsets);
-
-        // Shadow + highlight the link for the section currently in view
-        function updateNav() {
-            navbar.classList.toggle("scrolled", window.scrollY > 10);
-
-            const trigger = navbar.offsetHeight + 40;
-            let current = items[0];                       
-            items.forEach(i => {
-                if (i.target.getBoundingClientRect().top <= trigger) current = i;
+        sendBtn.disabled = true;
+        sendBtn.textContent = "Sending…";
+        try {
+            const res = await fetch(FORM_ENDPOINT, {
+                method: "POST",
+                headers: { "Accept": "application/json" },
+                body: new FormData(form)
             });
-
-            // very bottom of the page: the last link 
-            const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-            if (atBottom && items.length) current = items[items.length - 1];
-
-            navLinks.forEach(a => a.classList.toggle("active", !!current && a === current.link));
+            if (!res.ok) throw new Error("bad response");
+            form.reset();
+            flash("Message sent! I'll get back to you soon.");
+        } catch (err) {
+            showError("Couldn't send that. Try again, or email me directly.");
+        } finally {
+            sendBtn.disabled = false;
+            sendBtn.textContent = "Send message";
         }
-        window.addEventListener("scroll", updateNav, { passive: true });
-        window.addEventListener("resize", updateNav);
-        updateNav();
-
-        // Copy-to-clipboard for the email card
-        const toast = document.getElementById("toast");
-        document.querySelectorAll(".copy-btn").forEach(btn => {
-            btn.addEventListener("click", async () => {
-                try {
-                    await navigator.clipboard.writeText(btn.dataset.copy);
-                    if (toast) {
-                        toast.classList.add("show");
-                        setTimeout(() => toast.classList.remove("show"), 2000);
-                    }
-                } catch (e) {
-                    window.location.href = "mailto:" + btn.dataset.copy;
-                }
-            });
-        });
-
-        
-    </script>
+    });
+</script>
 
 
 </body>
